@@ -40,7 +40,7 @@ struct ViewModifierBootcamp: View {
             
             Text("Hello everyone!")
                 .font(.subheadline)
-                .modifier(DefaultButtonViewModifier(backgroundColor: .blue))
+                .withDefaultButtonFormatting()
             
             Text("Hello !!!")
                 .modifier(DefaultButtonViewModifier(backgroundColor: .red))
