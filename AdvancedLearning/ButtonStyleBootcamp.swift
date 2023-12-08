@@ -11,6 +11,10 @@ struct PressableButtonStyle: ButtonStyle {
     
     let scaledAmount: CGFloat
     
+    init(scaledAmount: CGFloat = 0.9) { // default value for parameter
+        self.scaledAmount = scaledAmount
+    }
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .scaleEffect(configuration.isPressed ? scaledAmount : 1.0)
@@ -33,7 +37,7 @@ struct ButtonStyleBootcamp: View {
                 .cornerRadius(10)
                 .shadow(color: .blue.opacity(0.3), radius: 10, x: 0.0, y: 10)
         })
-        .buttonStyle(PressableButtonStyle(scaledAmount: 0.5))
+        .buttonStyle(PressableButtonStyle())
         .padding(40)
     }
 }
