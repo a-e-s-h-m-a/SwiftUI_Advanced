@@ -11,6 +11,7 @@
 		185ACBBC2B235A0A00F0AB07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185ACBBB2B235A0A00F0AB07 /* Assets.xcassets */; };
 		185ACBBF2B235A0A00F0AB07 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185ACBBE2B235A0A00F0AB07 /* Preview Assets.xcassets */; };
 		185ACBC62B235BCC00F0AB07 /* ViewModifierBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ACBC52B235BCC00F0AB07 /* ViewModifierBootcamp.swift */; };
+		185ACBC82B2364FF00F0AB07 /* ButtonStyleBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ACBC72B2364FF00F0AB07 /* ButtonStyleBootcamp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		185ACBBB2B235A0A00F0AB07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		185ACBBE2B235A0A00F0AB07 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		185ACBC52B235BCC00F0AB07 /* ViewModifierBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifierBootcamp.swift; sourceTree = "<group>"; };
+		185ACBC72B2364FF00F0AB07 /* ButtonStyleBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleBootcamp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				185ACBC52B235BCC00F0AB07 /* ViewModifierBootcamp.swift */,
 				185ACBBB2B235A0A00F0AB07 /* Assets.xcassets */,
 				185ACBBD2B235A0A00F0AB07 /* Preview Content */,
+				185ACBC72B2364FF00F0AB07 /* ButtonStyleBootcamp.swift */,
 			);
 			path = AdvancedLearning;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185ACBC82B2364FF00F0AB07 /* ButtonStyleBootcamp.swift in Sources */,
 				185ACBC62B235BCC00F0AB07 /* ViewModifierBootcamp.swift in Sources */,
 				185ACBB82B235A0900F0AB07 /* AdvancedLearningApp.swift in Sources */,
 			);
