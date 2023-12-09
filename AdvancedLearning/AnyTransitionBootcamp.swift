@@ -18,6 +18,8 @@ struct AnyTransitionBootcamp: View {
             if showRectangle {
                 RoundedRectangle(cornerRadius: 25)
                     .frame(width: 250, height: 350)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .transition(.move(edge: .leading))
             }
             
             Spacer()
