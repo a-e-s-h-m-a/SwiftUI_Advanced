@@ -23,7 +23,7 @@ struct RotateViewModifier: ViewModifier {
 
 extension AnyTransition {
     static var rotating: AnyTransition {
-        return AnyTransition.modifier(
+        modifier(
             active: RotateViewModifier(rotation: 180), //active state
             identity: RotateViewModifier(rotation: 0) // non active state
         )
@@ -31,9 +31,17 @@ extension AnyTransition {
     
     // with parameters
     static func rotating(rotation: Double) -> AnyTransition {
-        return AnyTransition.modifier(
+        modifier(
             active: RotateViewModifier(rotation: rotation), //active state
             identity: RotateViewModifier(rotation: 0) // non active state
+        )
+    }
+    
+    // asymmetric transition
+    static var rotateOn: AnyTransition {
+        asymmetric(
+            insertion: .rotating,
+            removal: .move(edge: .trailing)
         )
     }
 }
@@ -51,7 +59,8 @@ struct AnyTransitionBootcamp: View {
                 RoundedRectangle(cornerRadius: 25)
                     .frame(width: 250, height: 350)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .transition(.rotating(rotation: 1080))
+                    .transition(.rotateOn)
+//                    .transition(.rotating(rotation: 1080))
 //                    .transition(AnyTransition.rotating.animation(.easeInOut))
             }
             
