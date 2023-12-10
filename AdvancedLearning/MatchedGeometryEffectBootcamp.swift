@@ -15,6 +15,7 @@ struct MatchedGeometryEffectBootcamp: View {
         VStack {
             RoundedRectangle(cornerRadius: 25.0)
                 .frame(width: 100, height: 100)
+                .offset(y: isClicked ? UIScreen.main.bounds.height * 0.75 : 0)
             
             Spacer()
         }
