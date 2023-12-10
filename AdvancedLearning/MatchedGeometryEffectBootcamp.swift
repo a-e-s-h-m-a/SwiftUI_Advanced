@@ -40,5 +40,42 @@ struct MatchedGeometryEffectBootcamp: View {
 }
 
 #Preview {
-    MatchedGeometryEffectBootcamp()
+//    MatchedGeometryEffectBootcamp()
+    MatchedGeometryEffectExample()
+}
+
+
+struct MatchedGeometryEffectExample: View {
+    
+    let categories: [String] = ["Home", "Popular", "Saved"]
+    @State private var selected: String = ""
+    @Namespace private var namespace2
+    
+    var body: some View {
+        HStack {
+            ForEach(categories, id: \.self) { category in
+                ZStack {
+                    if selected == category {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(.red)
+                            .matchedGeometryEffect(id: "category_background", in: namespace2) // for smooth animation
+                            .frame(width: 35, height: 3)
+                            .offset(y: 15)
+                       
+                    }
+                    
+                    Text(category)
+                        .foregroundStyle(selected == category ? .red : .black)
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 55)
+                .onTapGesture {
+                    withAnimation(.spring()) {
+                        selected = category
+                    }
+                }
+            }
+        }
+        .padding()
+    }
 }
