@@ -16,16 +16,16 @@ struct MatchedGeometryEffectBootcamp: View {
         VStack {
             if !isClicked {
                 RoundedRectangle(cornerRadius: 25.0)
-                    .frame(width: 100, height: 100)
                     .matchedGeometryEffect(id: "rectangle", in: namespace) // IDs should matched
+                    .frame(width: 100, height: 100)
             }
             
             Spacer()
             
             if isClicked {
                 RoundedRectangle(cornerRadius: 25.0)
-                    .frame(width: 100, height: 100)
                     .matchedGeometryEffect(id: "rectangle", in: namespace) // IDs should matched
+                    .frame(width: 300, height: 100)
             }
             
         }
