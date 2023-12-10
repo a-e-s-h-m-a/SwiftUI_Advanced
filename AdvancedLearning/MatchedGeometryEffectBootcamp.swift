@@ -10,14 +10,24 @@ import SwiftUI
 struct MatchedGeometryEffectBootcamp: View {
     
     @State private var isClicked: Bool = false
+    @Namespace private var namespace
     
     var body: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 25.0)
-                .frame(width: 100, height: 100)
-                .offset(y: isClicked ? UIScreen.main.bounds.height * 0.75 : 0)
+            if !isClicked {
+                RoundedRectangle(cornerRadius: 25.0)
+                    .frame(width: 100, height: 100)
+                    .matchedGeometryEffect(id: "rectangle", in: namespace) // IDs should matched
+            }
             
             Spacer()
+            
+            if isClicked {
+                RoundedRectangle(cornerRadius: 25.0)
+                    .frame(width: 100, height: 100)
+                    .matchedGeometryEffect(id: "rectangle", in: namespace) // IDs should matched
+            }
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.red)
