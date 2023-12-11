@@ -33,12 +33,23 @@ class GenericsViewModel: ObservableObject {
     }
 }
 
+struct GenericView: View {
+    
+    let title: String
+    
+    var body: some View {
+        Text(title)
+    }
+}
+
+
 struct GenericsBootcamp: View {
     
     @StateObject private var vm = GenericsViewModel()
     
     var body: some View {
         VStack {
+            GenericView(title: "new value")
             Text(vm.stringModel.info ?? "no data")
             Text(vm.genericModel.info ?? "no data")
         }
