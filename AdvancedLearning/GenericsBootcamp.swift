@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+struct GenericModel<T> {
+    let info: T?
+    
+    func removeInfo() -> GenericModel {
+        GenericModel(info: nil)
+    }
+}
+
 struct StringModel {
     let info: String?
     
@@ -17,9 +25,11 @@ struct StringModel {
 
 class GenericsViewModel: ObservableObject {
     @Published var stringModel = StringModel(info: "Hello world")
+    @Published var genericModel = GenericModel(info: "hiii")
     
     func removeData() {
         stringModel = stringModel.removeInfo()
+        genericModel = genericModel.removeInfo()
     }
 }
 
@@ -30,9 +40,10 @@ struct GenericsBootcamp: View {
     var body: some View {
         VStack {
             Text(vm.stringModel.info ?? "no data")
-                .onTapGesture {
-                    vm.removeData()
-                }
+            Text(vm.genericModel.info ?? "no data")
+        }
+        .onTapGesture {
+            vm.removeData()
         }
     }
 }
