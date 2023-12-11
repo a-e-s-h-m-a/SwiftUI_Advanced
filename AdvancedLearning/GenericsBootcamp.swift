@@ -33,12 +33,16 @@ class GenericsViewModel: ObservableObject {
     }
 }
 
-struct GenericView: View {
+struct GenericView<T: View>: View {
     
+    let content: T
     let title: String
     
     var body: some View {
-        Text(title)
+        VStack {
+            Text(title)
+            content
+        }
     }
 }
 
@@ -49,7 +53,7 @@ struct GenericsBootcamp: View {
     
     var body: some View {
         VStack {
-            GenericView(title: "new value")
+            GenericView(content: Text("MEE"), title: "new value")
             Text(vm.stringModel.info ?? "no data")
             Text(vm.genericModel.info ?? "no data")
         }
