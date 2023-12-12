@@ -100,5 +100,49 @@ struct ViewBuilderBootcamp: View {
 }
 
 #Preview {
-    ViewBuilderBootcamp()
+//    ViewBuilderBootcamp()
+    LocalViewBuilder(type: .one)
 }
+
+struct LocalViewBuilder: View {
+    
+    enum ViewType: Equatable {
+        case one, two, three
+    }
+    
+    let type: ViewType
+    
+    var body: some View {
+        VStack {
+            headerSection
+        }
+    }
+    
+    
+    @ViewBuilder private var headerSection: some View {
+        switch type {
+        case .one:
+            viewOne
+        case .two:
+            viewTwo
+        case .three:
+            viewThree
+        }
+    }
+
+    private var viewOne: some View {
+        Text("One!")
+    }
+
+    private var viewTwo: some View {
+        VStack {
+            Text("Two!")
+            Image(systemName: "heart.fill")
+        }
+    }
+
+    private var viewThree: some View {
+        Image(systemName: "heart.fill")
+    }
+}
+
