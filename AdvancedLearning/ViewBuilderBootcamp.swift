@@ -61,6 +61,20 @@ struct HeaderViewGeneric<T: View>: View {
     }
 }
 
+struct CustomHStack<T: View>: View {
+    let content: T
+    
+    init(@ViewBuilder content: () -> T) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        HStack {
+            content
+        }
+    }
+}
+
 struct ViewBuilderBootcamp: View {
     var body: some View {
         VStack {
@@ -72,6 +86,12 @@ struct ViewBuilderBootcamp: View {
                     Image(systemName: "bolt.fill")
                     Text("hiiii")
                 }
+            }
+            
+            CustomHStack {
+                Text("hiiii")
+                Image(systemName: "bolt.fill")
+                Text("hiiii")
             }
 
             Spacer()
