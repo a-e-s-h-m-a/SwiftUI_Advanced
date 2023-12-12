@@ -40,6 +40,11 @@ struct HeaderViewGeneric<T: View>: View {
     let title: String
     let content: T
     
+    init(title: String, content: T) {
+        self.title = title
+        self.content = content
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
