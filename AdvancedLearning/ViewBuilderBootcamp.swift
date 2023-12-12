@@ -35,10 +35,40 @@ struct HeaderViewRegular: View {
     }
 }
 
+
+struct HeaderViewGeneric<T: View>: View {
+    let title: String
+    let content: T
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(title)
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+            
+            content
+
+            RoundedRectangle(cornerRadius: 5)
+                .frame(height: 2)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+    }
+}
+
 struct ViewBuilderBootcamp: View {
     var body: some View {
         VStack {
             HeaderViewRegular(title: "Title", description: "desc", iconName: "heart.fill")
+            
+            HeaderViewGeneric(title: "Generic title 1", content: Text("hello"))
+            
+            HeaderViewGeneric(title: "Generic title 2", content: Image(systemName: "heart.fill"))
+            
+            HeaderViewGeneric(title: "Generic title 3", content: HStack {
+                Text("hellooo")
+                Image(systemName: "bolt.fill")
+            })
             
             Spacer()
         }
