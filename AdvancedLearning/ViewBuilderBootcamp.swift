@@ -11,7 +11,7 @@ struct HeaderViewRegular: View {
     
     let title: String
     let description: String?
-    
+    let iconName: String?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,6 +21,10 @@ struct HeaderViewRegular: View {
             if let description = description {
                 Text(description)
                     .font(.callout)
+            }
+            
+            if let iconName = iconName {
+                Image(systemName: iconName)
             }
 
             RoundedRectangle(cornerRadius: 5)
@@ -34,7 +38,7 @@ struct HeaderViewRegular: View {
 struct ViewBuilderBootcamp: View {
     var body: some View {
         VStack {
-            HeaderViewRegular(title: "Title", description: "desc")
+            HeaderViewRegular(title: "Title", description: "desc", iconName: "heart.fill")
             
             Spacer()
         }
