@@ -15,13 +15,13 @@ struct AppTabBarView: View {
     var body: some View {
         CustomTabBarContainerView(selection: $tabSelection) {
             Color.blue
-                .tabBarItem(tab: TabBarItem(iconName: "house", title: "Home", color: .red))
+                .tabBarItem(tab: TabBarItem(iconName: "house", title: "Home", color: .red), selection: $tabSelection)
             
             Color.red
-                .tabBarItem(tab: TabBarItem(iconName: "heart", title: "Favourites", color: .blue))
+                .tabBarItem(tab: TabBarItem(iconName: "heart", title: "Favourites", color: .blue), selection: $tabSelection)
             
             Color.green
-                .tabBarItem(tab: TabBarItem(iconName: "person", title: "Profile", color: .green))
+                .tabBarItem(tab: TabBarItem(iconName: "person", title: "Profile", color: .green), selection: $tabSelection)
         }
 //        defaultTabView
     }
