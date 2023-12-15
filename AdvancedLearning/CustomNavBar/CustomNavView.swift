@@ -30,3 +30,11 @@ struct CustomNavView<Content: View>: View {
         Color.red.ignoresSafeArea()
     }
 }
+
+// to re-enable swiping navigation gestures
+extension UINavigationController {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = nil
+    }
+}
