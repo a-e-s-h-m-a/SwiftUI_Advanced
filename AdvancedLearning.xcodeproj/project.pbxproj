@@ -20,6 +20,7 @@
 		185ACBC82B2364FF00F0AB07 /* ButtonStyleBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ACBC72B2364FF00F0AB07 /* ButtonStyleBootcamp.swift */; };
 		1874380B2B2756C600D33213 /* AnimatableDataBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874380A2B2756C600D33213 /* AnimatableDataBootcamp.swift */; };
 		1874380D2B27617300D33213 /* GenericsBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874380C2B27617300D33213 /* GenericsBootcamp.swift */; };
+		188B5E902B2C0DD200637932 /* AppTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B5E8F2B2C0DD200637932 /* AppTabBarView.swift */; };
 		18D52BC52B262AFB0002017E /* MatchedGeometryEffectBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D52BC42B262AFB0002017E /* MatchedGeometryEffectBootcamp.swift */; };
 		18E2D3422B283F3A007C6347 /* ViewBuilderBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2D3412B283F3A007C6347 /* ViewBuilderBootcamp.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		185ACBC72B2364FF00F0AB07 /* ButtonStyleBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleBootcamp.swift; sourceTree = "<group>"; };
 		1874380A2B2756C600D33213 /* AnimatableDataBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableDataBootcamp.swift; sourceTree = "<group>"; };
 		1874380C2B27617300D33213 /* GenericsBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericsBootcamp.swift; sourceTree = "<group>"; };
+		188B5E8F2B2C0DD200637932 /* AppTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarView.swift; sourceTree = "<group>"; };
 		18D52BC42B262AFB0002017E /* MatchedGeometryEffectBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedGeometryEffectBootcamp.swift; sourceTree = "<group>"; };
 		18E2D3412B283F3A007C6347 /* ViewBuilderBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilderBootcamp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,7 @@
 				1874380C2B27617300D33213 /* GenericsBootcamp.swift */,
 				18E2D3412B283F3A007C6347 /* ViewBuilderBootcamp.swift */,
 				1847F9342B28BC0300AA98F4 /* PreferenceKeyBootcamp */,
+				188B5E8E2B2C0D7E00637932 /* CustomTabBar */,
 				185ACBBB2B235A0A00F0AB07 /* Assets.xcassets */,
 				185ACBBD2B235A0A00F0AB07 /* Preview Content */,
 			);
@@ -106,6 +109,14 @@
 				185ACBBE2B235A0A00F0AB07 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		188B5E8E2B2C0D7E00637932 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				188B5E8F2B2C0DD200637932 /* AppTabBarView.swift */,
+			);
+			path = CustomTabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188B5E902B2C0DD200637932 /* AppTabBarView.swift in Sources */,
 				185ACBC82B2364FF00F0AB07 /* ButtonStyleBootcamp.swift in Sources */,
 				185ACBC62B235BCC00F0AB07 /* ViewModifierBootcamp.swift in Sources */,
 				181855BD2B24DA91004B752B /* AnyTransitionBootcamp.swift in Sources */,
