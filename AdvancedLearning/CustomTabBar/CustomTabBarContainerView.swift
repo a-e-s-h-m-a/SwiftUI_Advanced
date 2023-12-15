@@ -31,11 +31,7 @@ struct CustomTabBarContainerView<Content: View>: View {
 }
 
 #Preview {
-    let tabs: [TabBarItem] = [
-        TabBarItem(iconName: "house", title: "Home", color: .red),
-        TabBarItem(iconName: "heart", title: "Favourites", color: .blue),
-        TabBarItem(iconName: "person", title: "Profile", color: .green)
-    ]
+    let tabs: [TabBarItem] = [.home, .favourites, .profile]
     
     return CustomTabBarContainerView(selection: .constant(tabs.first!)) {
         Color.red

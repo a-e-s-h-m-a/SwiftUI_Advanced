@@ -27,11 +27,7 @@ struct CustomTabBarView: View {
 }
 
 #Preview {
-    let tabs: [TabBarItem] = [
-        TabBarItem(iconName: "house", title: "Home", color: .red),
-        TabBarItem(iconName: "heart", title: "Favourites", color: .blue),
-        TabBarItem(iconName: "person", title: "Profile", color: .green)
-    ]
+    let tabs: [TabBarItem] = [.home, .favourites, .profile]
     
     return VStack {
         Spacer()
@@ -59,10 +55,4 @@ extension CustomTabBarView {
             selection = tab
         }
     }
-}
-
-struct TabBarItem: Hashable {
-    let iconName: String
-    let title: String
-    let color: Color
 }
