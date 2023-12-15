@@ -10,9 +10,9 @@ import SwiftUI
 struct CustomNavBarView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @State var showBackButton: Bool = true
-    @State var title: String = "Title" //""
-    @State var subtitle: String? = "Subtitle"//nil
+    let showBackButton: Bool
+    let title: String
+    let subtitle: String?
     
     var body: some View {
         HStack {
@@ -48,7 +48,7 @@ extension CustomNavBarView {
     
     private var titleSection: some View {
         VStack {
-            Text("Title")
+            Text(title)
                 .font(.title)
                 .fontWeight(.semibold)
             if let subtitle = subtitle {
@@ -60,7 +60,7 @@ extension CustomNavBarView {
 
 #Preview {
     VStack {
-        CustomNavBarView()
+        CustomNavBarView(showBackButton: true, title: "Title", subtitle: "subtitle")
         Spacer()
     }
 }

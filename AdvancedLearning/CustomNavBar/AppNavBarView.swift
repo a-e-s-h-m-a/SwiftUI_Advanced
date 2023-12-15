@@ -14,9 +14,15 @@ struct AppNavBarView: View {
             ZStack {
                 Color.orange.ignoresSafeArea()
                 
-                CustomNavLink(destination: Text("destination")) {
+                CustomNavLink(
+                    destination: Text("destination")
+                        .customNavigationTitle("second screen")
+                        .customNavigationSubtitle("custom subtitle")
+                    
+                ) {
                     Text("Navigate")
                 }
+                .custonNavBarItems(title: "New title", subtitle: "subtitle", backButtonHidden: true)
                 
 //                NavigationLink {
 //                    Text("destination")
