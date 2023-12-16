@@ -25,6 +25,7 @@ struct UIViewRepresentableBootcamp: View {
             HStack {
                 Text("UIKit")
                 UITextFieldViewRepresentable(text: $text)
+                    .updatePlaceholder("Type here...")
                     .frame(height: 55)
                     .background(.gray)
             }
@@ -39,6 +40,14 @@ struct UIViewRepresentableBootcamp: View {
 struct UITextFieldViewRepresentable: UIViewRepresentable {
     
     @Binding var text: String
+    var placeholderText: String
+    let placeholderColor: UIColor
+    
+    init(text: Binding<String>, placeholderText: String = "Default placeholder...", placeholderColor: UIColor = .red) {
+        self._text = text
+        self.placeholderText = placeholderText
+        self.placeholderColor = placeholderColor
+    }
     
     func makeUIView(context: Context) -> UITextField {
         
@@ -54,15 +63,21 @@ struct UITextFieldViewRepresentable: UIViewRepresentable {
     
     private func getTextField() -> UITextField {
         let placeHolder = NSAttributedString(
-            string: "Type here...",
+            string: placeholderText,
             attributes: [
-                .foregroundColor: UIColor.red
+                .foregroundColor: placeholderColor
             ]
         )
         
         let textField = UITextField(frame: .zero)
         textField.attributedPlaceholder = placeHolder
         return textField
+    }
+    
+    func updatePlaceholder(_ text: String) -> UITextFieldViewRepresentable {
+        var viewRepresentable = self
+        viewRepresentable.placeholderText = text
+        return viewRepresentable
     }
     
     // Use this to send data from UIKit to SwiftUI
