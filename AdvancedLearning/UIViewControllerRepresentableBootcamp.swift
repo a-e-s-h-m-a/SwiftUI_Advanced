@@ -20,7 +20,7 @@ struct UIViewControllerRepresentableBootcamp: View {
                 Text("Click here")
             })
             .sheet(isPresented: $showScreen, content: {
-                BasicUIViewControllerRepresentable()
+                BasicUIViewControllerRepresentable(labelString: "new text")
             })
         }
     }
@@ -31,21 +31,34 @@ struct UIViewControllerRepresentableBootcamp: View {
 }
 
 struct BasicUIViewControllerRepresentable: UIViewControllerRepresentable {
+    
+    let labelString: String
+    
     func makeUIViewController(context: Context) -> some UIViewController {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .blue
-        
-        let label = UILabel()
-        label.text = "Hello world"
-        label.textColor = .white
-        
-        vc.view.addSubview(label)
-        label.frame = vc.view.frame
-        
+        let vc = MyFirstUIViewController()
+        vc.labelText = labelString
         return vc
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         
+    }
+}
+
+class MyFirstUIViewController: UIViewController {
+    
+    var labelText: String = "Starting value"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .blue
+        
+        let label = UILabel()
+        label.text = labelText
+        label.textColor = .white
+        
+        view.addSubview(label)
+        label.frame = view.frame
     }
 }
