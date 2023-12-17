@@ -33,6 +33,7 @@
 		188B5E962B2C235500637932 /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B5E952B2C235500637932 /* TabBarItemsPreferenceKey.swift */; };
 		188B5E982B2C288000637932 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B5E972B2C288000637932 /* TabBarItem.swift */; };
 		18D52BC52B262AFB0002017E /* MatchedGeometryEffectBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D52BC42B262AFB0002017E /* MatchedGeometryEffectBootcamp.swift */; };
+		18E2661E2B2EAAF300CD7B3B /* UIViewControllerRepresentableBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2661D2B2EAAF300CD7B3B /* UIViewControllerRepresentableBootcamp.swift */; };
 		18E2D3422B283F3A007C6347 /* ViewBuilderBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2D3412B283F3A007C6347 /* ViewBuilderBootcamp.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		188B5E952B2C235500637932 /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
 		188B5E972B2C288000637932 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		18D52BC42B262AFB0002017E /* MatchedGeometryEffectBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedGeometryEffectBootcamp.swift; sourceTree = "<group>"; };
+		18E2661D2B2EAAF300CD7B3B /* UIViewControllerRepresentableBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentableBootcamp.swift; sourceTree = "<group>"; };
 		18E2D3412B283F3A007C6347 /* ViewBuilderBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilderBootcamp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 				188B5E8E2B2C0D7E00637932 /* CustomTabBar */,
 				183E84002B2C5F9D00FA3AC9 /* CustomNavBar */,
 				1814EABE2B2D722400FAEEC1 /* UIViewRepresentableBootcamp.swift */,
+				18E2661D2B2EAAF300CD7B3B /* UIViewControllerRepresentableBootcamp.swift */,
 				185ACBBB2B235A0A00F0AB07 /* Assets.xcassets */,
 				185ACBBD2B235A0A00F0AB07 /* Preview Content */,
 			);
@@ -244,6 +247,7 @@
 				183E84042B2C6F3800FA3AC9 /* CustomNavBarView.swift in Sources */,
 				18E2D3422B283F3A007C6347 /* ViewBuilderBootcamp.swift in Sources */,
 				1874380D2B27617300D33213 /* GenericsBootcamp.swift in Sources */,
+				18E2661E2B2EAAF300CD7B3B /* UIViewControllerRepresentableBootcamp.swift in Sources */,
 				183E840A2B2C79EB00FA3AC9 /* CustomNavLink.swift in Sources */,
 				1847F9382B28C04B00AA98F4 /* ScrollViewOffsetPreferenceBootcamp.swift in Sources */,
 				183E840C2B2C7EE100FA3AC9 /* CustomNavBarPreferenceKey.swift in Sources */,
