@@ -31,17 +31,28 @@ protocol ColorThemeProtocol {
     var tertiary: Color { get }
 }
 
+protocol ButtonTextProtocol {
+    var buttonText: String { get }
+}
+
+class DefaultDataSource: ButtonTextProtocol {
+    var buttonText: String = "Protocols are awesome!"
+}
+
+class AlternativeDataSource: ButtonTextProtocol {
+    var buttonText: String = "Protocols are lame!"
+}
+
 struct ProtocolsBootcamp: View {
-    
-//    let colorTheme: DefaultColorTheme = DefaultColorTheme()
-//    let colorTheme: AlternativeColorTheme = AlternativeColorTheme()
+
     let colorTheme: ColorThemeProtocol
+    let dataSource: ButtonTextProtocol
     
     var body: some View {
         ZStack {
             colorTheme.tertiary.ignoresSafeArea()
             
-            Text("Protocols are awesome!")
+            Text(dataSource.buttonText)
                 .font(.headline)
                 .foregroundStyle(colorTheme.secondary)
                 .padding()
@@ -52,5 +63,5 @@ struct ProtocolsBootcamp: View {
 }
 
 #Preview {
-    ProtocolsBootcamp(colorTheme: AnotherColorTheme())
+    ProtocolsBootcamp(colorTheme: DefaultColorTheme(), dataSource: DefaultDataSource())
 }
