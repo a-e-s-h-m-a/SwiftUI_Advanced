@@ -33,13 +33,22 @@ protocol ColorThemeProtocol {
 
 protocol ButtonTextProtocol {
     var buttonText: String { get }
+    func buttonPressed()
 }
 
 class DefaultDataSource: ButtonTextProtocol {
+    func buttonPressed() {
+        print("default button was pressed")
+    }
+    
     var buttonText: String = "Protocols are awesome!"
 }
 
 class AlternativeDataSource: ButtonTextProtocol {
+    func buttonPressed() {
+        print("alternative button was pressed")
+    }
+    
     var buttonText: String = "Protocols are lame!"
 }
 
@@ -58,6 +67,9 @@ struct ProtocolsBootcamp: View {
                 .padding()
                 .background(colorTheme.primary)
                 .cornerRadius(10)
+                .onTapGesture {
+                    dataSource.buttonPressed()
+                }
         }
     }
 }
