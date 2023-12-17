@@ -7,22 +7,29 @@
 
 import SwiftUI
 
-struct DefaultColorTheme {
+struct DefaultColorTheme: ColorThemeProtocol {
     let primary: Color = .blue
     let secondary: Color = .white
     let tertiary: Color = .gray
 }
 
-struct AlternativeColorTheme {
+struct AlternativeColorTheme: ColorThemeProtocol {
     let primary: Color = .red
     let secondary: Color = .white
     let tertiary: Color = .green
 }
 
+protocol ColorThemeProtocol {
+    var primary: Color { get }
+    var secondary: Color { get }
+    var tertiary: Color { get }
+}
+
 struct ProtocolsBootcamp: View {
     
 //    let colorTheme: DefaultColorTheme = DefaultColorTheme()
-    let colorTheme: AlternativeColorTheme = AlternativeColorTheme()
+//    let colorTheme: AlternativeColorTheme = AlternativeColorTheme()
+    let colorTheme: ColorThemeProtocol = AlternativeColorTheme()
     
     var body: some View {
         ZStack {
