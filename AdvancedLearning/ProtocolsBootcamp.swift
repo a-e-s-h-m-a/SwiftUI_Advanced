@@ -19,6 +19,12 @@ struct AlternativeColorTheme: ColorThemeProtocol {
     let tertiary: Color = .green
 }
 
+struct AnotherColorTheme: ColorThemeProtocol {
+    var primary: Color = .blue
+    var secondary: Color = .red
+    var tertiary: Color = .purple
+}
+
 protocol ColorThemeProtocol {
     var primary: Color { get }
     var secondary: Color { get }
@@ -29,7 +35,7 @@ struct ProtocolsBootcamp: View {
     
 //    let colorTheme: DefaultColorTheme = DefaultColorTheme()
 //    let colorTheme: AlternativeColorTheme = AlternativeColorTheme()
-    let colorTheme: ColorThemeProtocol = AlternativeColorTheme()
+    let colorTheme: ColorThemeProtocol
     
     var body: some View {
         ZStack {
@@ -46,5 +52,5 @@ struct ProtocolsBootcamp: View {
 }
 
 #Preview {
-    ProtocolsBootcamp()
+    ProtocolsBootcamp(colorTheme: AnotherColorTheme())
 }
