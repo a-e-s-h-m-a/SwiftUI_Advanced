@@ -33,10 +33,13 @@ protocol ColorThemeProtocol {
 
 protocol ButtonTextProtocol {
     var buttonText: String { get }
+}
+
+protocol ButtonPressedProtocol {
     func buttonPressed()
 }
 
-class DefaultDataSource: ButtonTextProtocol {
+class DefaultDataSource: ButtonTextProtocol, ButtonPressedProtocol {
     func buttonPressed() {
         print("default button was pressed")
     }
@@ -56,6 +59,7 @@ struct ProtocolsBootcamp: View {
 
     let colorTheme: ColorThemeProtocol
     let dataSource: ButtonTextProtocol
+    let dataSource2: ButtonPressedProtocol
     
     var body: some View {
         ZStack {
@@ -68,12 +72,12 @@ struct ProtocolsBootcamp: View {
                 .background(colorTheme.primary)
                 .cornerRadius(10)
                 .onTapGesture {
-                    dataSource.buttonPressed()
+                    dataSource2.buttonPressed()
                 }
         }
     }
 }
 
 #Preview {
-    ProtocolsBootcamp(colorTheme: DefaultColorTheme(), dataSource: DefaultDataSource())
+    ProtocolsBootcamp(colorTheme: DefaultColorTheme(), dataSource: DefaultDataSource(), dataSource2: DefaultDataSource())
 }
