@@ -13,9 +13,16 @@ struct DefaultColorTheme {
     let tertiary: Color = .gray
 }
 
+struct AlternativeColorTheme {
+    let primary: Color = .red
+    let secondary: Color = .white
+    let tertiary: Color = .green
+}
+
 struct ProtocolsBootcamp: View {
     
-    let colorTheme: DefaultColorTheme = DefaultColorTheme()
+//    let colorTheme: DefaultColorTheme = DefaultColorTheme()
+    let colorTheme: AlternativeColorTheme = AlternativeColorTheme()
     
     var body: some View {
         ZStack {
