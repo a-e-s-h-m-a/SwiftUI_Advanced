@@ -15,7 +15,11 @@ struct PostModel: Identifiable, Codable {
     let body: String
 }
 
-class ProductionDataService {
+protocol DataServiceProtocol {
+    func getData() -> AnyPublisher<[PostModel], Error>
+}
+
+class ProductionDataService: DataServiceProtocol {
     
     let url: URL
     
@@ -32,13 +36,27 @@ class ProductionDataService {
     }
 }
 
+class MockDataService: DataServiceProtocol {
+    
+    let testData: [PostModel] = [
+        PostModel(userId: 1, id: 1, title: "one", body: "one"),
+        PostModel(userId: 2, id: 2, title: "two", body: "two")
+    ]
+    
+    func getData() -> AnyPublisher<[PostModel], Error> {
+        Just(testData)
+            .tryMap { $0 }
+            .eraseToAnyPublisher()
+    }
+}
+
 class DependencyInjectionViewModel: ObservableObject {
     @Published var dataArray: [PostModel] = []
     var cancellables = Set<AnyCancellable>()
-    var dataService: ProductionDataService
+    var dataService: DataServiceProtocol
     
     
-    init(dataService: ProductionDataService) {
+    init(dataService: DataServiceProtocol) {
         self.dataService = dataService
         loadPosts()
     }
@@ -58,7 +76,7 @@ struct DependencyInjectionBootcamp: View {
     
     @StateObject private var vm: DependencyInjectionViewModel
     
-    init(dataService: ProductionDataService) {
+    init(dataService: DataServiceProtocol) {
         _vm = StateObject(wrappedValue: DependencyInjectionViewModel(dataService: dataService))
     }
     
@@ -75,6 +93,7 @@ struct DependencyInjectionBootcamp: View {
 
 #Preview {
     let dataService = ProductionDataService(url: URL(string: "https://jsonplaceholder.typicode.com/posts")!)
+    let mockDataService = MockDataService()
     
-    return DependencyInjectionBootcamp(dataService: dataService)
+    return DependencyInjectionBootcamp(dataService: mockDataService)
 }
