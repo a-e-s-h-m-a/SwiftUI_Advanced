@@ -86,7 +86,7 @@ final class UnitTestingBootcampVM_Tests: XCTestCase {
         // when
         let loopCount = Int.random(in: 1..<10)
         for _ in 0..<loopCount {
-            vm.addIten(item: UUID().uuidString)
+            vm.addItem(item: UUID().uuidString)
         }
         
         // then
@@ -101,10 +101,70 @@ final class UnitTestingBootcampVM_Tests: XCTestCase {
         let vm = UnitTestingBootcampVM(isPremium: Bool.random())
         
         // when
-        vm.addIten(item: "")
+        vm.addItem(item: "")
         
         // then
         XCTAssertTrue(vm.dataArray.isEmpty)
+    }
+    
+    func test_UnitTestingBootcampVM_selectedItem_shouldStartAsNil() {
+        // given
+        let vm = UnitTestingBootcampVM(isPremium: Bool.random())
+        
+        // when
+        vm.addItem(item: "")
+        
+        // then
+        XCTAssertNil(vm.selectedItem)
+    }
+    
+    func test_UnitTestingBootcampVM_selectedItem_shouldBeNilWhenSelectingInvalidItem() {
+        // given
+        let vm = UnitTestingBootcampVM(isPremium: Bool.random())
+        
+        // when
+        // select valid item
+        let newItem = UUID().uuidString
+        vm.addItem(item: newItem)
+        vm.selectItem(item: newItem)
+        // select invalid item
+        vm.selectItem(item: UUID().uuidString)
+        
+        // then
+        XCTAssertNil(vm.selectedItem)
+    }
+    
+    func test_UnitTestingBootcampVM_selectedItem_shouldBeSelected() {
+        // given
+        let vm = UnitTestingBootcampVM(isPremium: Bool.random())
+        
+        // when
+        let newItem = UUID().uuidString
+        vm.addItem(item: newItem)
+        vm.selectItem(item: newItem)
+        
+        // then
+        XCTAssertEqual(vm.selectedItem, newItem)
+    }
+    
+    func test_UnitTestingBootcampVM_selectedItem_shouldBeSelected_stress() {
+        // given
+        let vm = UnitTestingBootcampVM(isPremium: Bool.random())
+        
+        // when
+        let loopCount = Int.random(in: 1..<10)
+        var itemArray: [String] = []
+        for _ in 0..<loopCount {
+            let newItem = UUID().uuidString
+            vm.addItem(item: newItem)
+            itemArray.append(newItem)
+        }
+        
+        let randomItem = itemArray.randomElement() ?? ""
+        vm.selectItem(item: randomItem)
+        
+        // then
+        XCTAssertEqual(vm.selectedItem, randomItem)
     }
 
 }
