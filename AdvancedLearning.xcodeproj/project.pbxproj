@@ -11,6 +11,8 @@
 		180A7B912B26F9CF00114813 /* CustomCurvesBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A7B902B26F9CF00114813 /* CustomCurvesBootcamp.swift */; };
 		1814EABF2B2D722400FAEEC1 /* UIViewRepresentableBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814EABE2B2D722400FAEEC1 /* UIViewRepresentableBootcamp.swift */; };
 		181855BD2B24DA91004B752B /* AnyTransitionBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181855BC2B24DA91004B752B /* AnyTransitionBootcamp.swift */; };
+		1836BBDF2B3B0946001287ED /* NewMockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836BBDE2B3B0946001287ED /* NewMockDataService.swift */; };
+		1836BBE12B3B0AB3001287ED /* NewMockDataService_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836BBE02B3B0AB3001287ED /* NewMockDataService_Test.swift */; };
 		183E84022B2C602100FA3AC9 /* AppNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E84012B2C602100FA3AC9 /* AppNavBarView.swift */; };
 		183E84042B2C6F3800FA3AC9 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E84032B2C6F3800FA3AC9 /* CustomNavBarView.swift */; };
 		183E84062B2C740800FA3AC9 /* CustomNavBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E84052B2C740800FA3AC9 /* CustomNavBarContainerView.swift */; };
@@ -58,6 +60,8 @@
 		180A7B902B26F9CF00114813 /* CustomCurvesBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurvesBootcamp.swift; sourceTree = "<group>"; };
 		1814EABE2B2D722400FAEEC1 /* UIViewRepresentableBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewRepresentableBootcamp.swift; sourceTree = "<group>"; };
 		181855BC2B24DA91004B752B /* AnyTransitionBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionBootcamp.swift; sourceTree = "<group>"; };
+		1836BBDE2B3B0946001287ED /* NewMockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMockDataService.swift; sourceTree = "<group>"; };
+		1836BBE02B3B0AB3001287ED /* NewMockDataService_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMockDataService_Test.swift; sourceTree = "<group>"; };
 		183E84012B2C602100FA3AC9 /* AppNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavBarView.swift; sourceTree = "<group>"; };
 		183E84032B2C6F3800FA3AC9 /* CustomNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
 		183E84052B2C740800FA3AC9 /* CustomNavBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarContainerView.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 			children = (
 				18DCB9182B3A9EEA00E13D43 /* UnitTestingBootcampView.swift */,
 				18DCB91B2B3AA1C800E13D43 /* UnitTestingBootcampVM.swift */,
+				1836BBDE2B3B0946001287ED /* NewMockDataService.swift */,
 			);
 			path = UnitTestingBootcamp;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			children = (
 				18DCB9232B3AA34400E13D43 /* AdvancedLearning_Tests.swift */,
 				18DCB92A2B3AA45500E13D43 /* UnitTestingBootcampVM_Tests.swift */,
+				1836BBE02B3B0AB3001287ED /* NewMockDataService_Test.swift */,
 			);
 			path = AdvancedLearning_Tests;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				183E84022B2C602100FA3AC9 /* AppNavBarView.swift in Sources */,
+				1836BBDF2B3B0946001287ED /* NewMockDataService.swift in Sources */,
 				188B5E962B2C235500637932 /* TabBarItemsPreferenceKey.swift in Sources */,
 				188B5E902B2C0DD200637932 /* AppTabBarView.swift in Sources */,
 				1814EABF2B2D722400FAEEC1 /* UIViewRepresentableBootcamp.swift in Sources */,
@@ -355,6 +362,7 @@
 			files = (
 				18DCB92B2B3AA45500E13D43 /* UnitTestingBootcampVM_Tests.swift in Sources */,
 				18DCB9242B3AA34400E13D43 /* AdvancedLearning_Tests.swift in Sources */,
+				1836BBE12B3B0AB3001287ED /* NewMockDataService_Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

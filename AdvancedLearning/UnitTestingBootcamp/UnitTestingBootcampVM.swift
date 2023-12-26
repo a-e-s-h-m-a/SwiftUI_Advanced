@@ -7,15 +7,20 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 class UnitTestingBootcampVM: ObservableObject {
+    var cancellables = Set<AnyCancellable>()
+    
     @Published var isPremium: Bool
     @Published var dataArray: [String] = []
     @Published var selectedItem: String? = nil
+    let dataService: NewDataServiceProtocol
     
     
-    init(isPremium: Bool) {
+    init(isPremium: Bool, dataService: NewDataServiceProtocol = NewMockDataService(items: nil)) {
         self.isPremium = isPremium
+        self.dataService = dataService
     }
     
     func addItem(item: String) {
@@ -41,6 +46,23 @@ class UnitTestingBootcampVM: ObservableObject {
         } else {
             throw DataError.itemNotFound
         }
+    }
+    
+    func downloadWithEscaping() {
+        dataService.downloadItemsWithEscaping { [weak self] items in
+            self?.dataArray = items
+        }
+    }
+    
+    func downloadWithCombine() {
+        dataService.downloadItemsWithCombine()
+            .sink { _ in
+                
+            } receiveValue: { [weak self] returnedItems in
+                self?.dataArray = returnedItems
+            }
+            .store(in: &cancellables)
+
     }
 }
 

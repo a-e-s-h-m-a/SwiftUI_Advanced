@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import AdvancedLearning
+import Combine
 
 // Naming structure: test_UnitOfWork_StateUnderTest_expectedBehaviour
 // Naming structure: test_[struct or class]_[variable or func]_[expected result]
@@ -16,6 +17,7 @@ import XCTest
 final class UnitTestingBootcampVM_Tests: XCTestCase {
     
     var viewModel: UnitTestingBootcampVM?
+    var cancellables = Set<AnyCancellable>()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -25,6 +27,7 @@ final class UnitTestingBootcampVM_Tests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         viewModel = nil
+        cancellables.removeAll()
     }
 
     func test_UnitTestingBootcampVM_isPremium_shouldBeTrue() {
@@ -246,6 +249,46 @@ final class UnitTestingBootcampVM_Tests: XCTestCase {
         } catch {
             XCTFail()
         }
+    }
+    
+    func test_UnitTestingBootcampVM_downloadWithEscaping_shouldReturnItems() {
+        // given
+        let vm = UnitTestingBootcampVM(isPremium: Bool.random())
+        
+        // when
+        let expectation = XCTestExpectation(description: "should return items after 3 sec")
+        
+        vm.$dataArray
+            .dropFirst()
+            .sink { returnedItems in
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        vm.downloadWithEscaping()
+        // then
+        wait(for: [expectation], timeout: 5)
+        XCTAssertGreaterThan(vm.dataArray.count, 0)
+    }
+    
+    func test_UnitTestingBootcampVM_downloadWithCombine_shouldReturnItems() {
+        // given
+        let vm = UnitTestingBootcampVM(isPremium: Bool.random())
+        
+        // when
+        let expectation = XCTestExpectation(description: "should return items a sec")
+        
+        vm.$dataArray
+            .dropFirst()
+            .sink { returnedItems in
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        vm.downloadWithCombine()
+        // then
+        wait(for: [expectation], timeout: 5)
+        XCTAssertGreaterThan(vm.dataArray.count, 0)
     }
 
 }
