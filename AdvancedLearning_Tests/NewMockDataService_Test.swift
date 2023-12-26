@@ -96,10 +96,10 @@ final class NewMockDataService_Test: XCTestCase {
                     XCTFail() //***
                 case .failure(let error):
                     expectation.fulfill() //***
-                    let urlError = error as? URLError
-                    XCTAssertEqual(urlError, URLError(.badServerResponse))
+//                    let urlError = error as? URLError
+//                    XCTAssertEqual(urlError, URLError(.badServerResponse))
                     
-                    if urlError == URLError(.badServerResponse) {
+                    if error as? URLError == URLError(.badServerResponse) {
                         expectation2.fulfill()
                     }
                 }
