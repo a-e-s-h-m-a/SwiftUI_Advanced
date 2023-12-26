@@ -14,13 +14,17 @@ import XCTest
 // Testing structute: given when then
 
 final class UnitTestingBootcampVM_Tests: XCTestCase {
+    
+    var viewModel: UnitTestingBootcampVM?
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        viewModel = UnitTestingBootcampVM(isPremium: Bool.random())
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        viewModel = nil
     }
 
     func test_UnitTestingBootcampVM_isPremium_shouldBeTrue() {
@@ -107,6 +111,20 @@ final class UnitTestingBootcampVM_Tests: XCTestCase {
         XCTAssertTrue(vm.dataArray.isEmpty)
     }
     
+    func test_UnitTestingBootcampVM_dataArray_shouldNotAddBlankString2() {
+        // given
+        guard let vm = viewModel  else {
+            XCTFail()
+            return
+        }
+        
+        // when
+        vm.addItem(item: "")
+        
+        // then
+        XCTAssertTrue(vm.dataArray.isEmpty)
+    }
+    
     func test_UnitTestingBootcampVM_selectedItem_shouldStartAsNil() {
         // given
         let vm = UnitTestingBootcampVM(isPremium: Bool.random())
@@ -161,10 +179,73 @@ final class UnitTestingBootcampVM_Tests: XCTestCase {
         }
         
         let randomItem = itemArray.randomElement() ?? ""
+        XCTAssertFalse(randomItem.isEmpty)
         vm.selectItem(item: randomItem)
         
         // then
         XCTAssertEqual(vm.selectedItem, randomItem)
+    }
+    
+    func test_UnitTestingBootcampVM_saveItem_shouldThrowError_itemNotFound() {
+        // given
+        let vm = UnitTestingBootcampVM(isPremium: Bool.random())
+        
+        // when
+        let loopCount = Int.random(in: 1..<10)
+        for _ in 0..<loopCount {
+            vm.addItem(item: UUID().uuidString)
+        }
+        
+        // then
+        XCTAssertThrowsError(try vm.saveItem(item: UUID().uuidString))
+        XCTAssertThrowsError(try vm.saveItem(item: UUID().uuidString), "should throw item not found error") { error in
+            let returnedError = error as? DataError
+            XCTAssertEqual(returnedError, DataError.itemNotFound)
+        }
+    }
+    
+    func test_UnitTestingBootcampVM_saveItem_shouldThrowError_noData() {
+        // given
+        let vm = UnitTestingBootcampVM(isPremium: Bool.random())
+        
+        // when
+        let loopCount = Int.random(in: 1..<10)
+        for _ in 0..<loopCount {
+            vm.addItem(item: UUID().uuidString)
+        }
+        
+        // then
+        do {
+            try vm.saveItem(item: "")
+        } catch let error {
+            let returnedError = error as? DataError
+            XCTAssertEqual(returnedError, DataError.noData)
+        }
+    }
+    
+    func test_UnitTestingBootcampVM_saveItem_shouldSaveItem() {
+        // given
+        let vm = UnitTestingBootcampVM(isPremium: Bool.random())
+        
+        // when
+        let loopCount = Int.random(in: 1..<10)
+        var itemArray: [String] = []
+        for _ in 0..<loopCount {
+            let newItem = UUID().uuidString
+            vm.addItem(item: newItem)
+            itemArray.append(newItem)
+        }
+        
+        let randomItem = itemArray.randomElement() ?? ""
+        XCTAssertFalse(randomItem.isEmpty)
+        // then
+        XCTAssertNoThrow(try vm.saveItem(item: randomItem))
+        
+        do {
+            try vm.saveItem(item: randomItem)
+        } catch {
+            XCTFail()
+        }
     }
 
 }
