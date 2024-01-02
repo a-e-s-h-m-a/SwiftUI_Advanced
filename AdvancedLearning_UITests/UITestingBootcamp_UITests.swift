@@ -30,34 +30,25 @@ final class UITestingBootcamp_UITests: XCTestCase {
     }
     
     func test_UITestingBootcampView_signUpButton_shouldSignIn() {
-        app.textFields["Add your name..."].tap()
+        // given
+        let textField = app.textFields["Add your name..."]
         
-        let mKey = app/*@START_MENU_TOKEN@*/.keys["M"]/*[[".keyboards.keys[\"M\"]",".keys[\"M\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        mKey.tap()
-        mKey.tap()
+        // when
+        textField.tap()
+        let keyA = app.keys["A"]
+        keyA.tap()
+        let keya = app.keys["a"]
+        keya.tap()
+        keya.tap()
         
-        let aKey = app/*@START_MENU_TOKEN@*/.keys["a"]/*[[".keyboards.keys[\"a\"]",".keys[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        aKey.tap()
-        aKey.tap()
+        let returnButton = app.buttons["Return"]
+        returnButton.tap()
         
-        let lKey = app/*@START_MENU_TOKEN@*/.keys["l"]/*[[".keyboards.keys[\"l\"]",".keys[\"l\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        lKey.tap()
-        lKey.tap()
+        let signedUpButton = app.buttons["Sign Up"]
+        signedUpButton.tap()
         
-        let iKey = app/*@START_MENU_TOKEN@*/.keys["i"]/*[[".keyboards.keys[\"i\"]",".keys[\"i\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        iKey.tap()
-        iKey.tap()
-        
-        let tKey = app/*@START_MENU_TOKEN@*/.keys["t"]/*[[".keyboards.keys[\"t\"]",".keys[\"t\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        tKey.tap()
-        tKey.tap()
-        
-        let hKey = app/*@START_MENU_TOKEN@*/.keys["h"]/*[[".keyboards.keys[\"h\"]",".keys[\"h\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        hKey.tap()
-        hKey.tap()
-        app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.buttons["Sign Up"].tap()
-        app.navigationBars["Welcome!"].staticTexts["Welcome!"].tap()
-                
+        let navBar = app.navigationBars["Welcome!"]
+        // then
+        XCTAssertTrue(navBar.exists)
     }
 }
