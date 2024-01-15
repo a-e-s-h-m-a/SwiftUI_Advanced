@@ -56,6 +56,7 @@ extension UITestingBootcampView {
                 .padding()
                 .background(.white)
                 .cornerRadius(10)
+                .accessibilityIdentifier("SignUpTextField")
             
             Button(action: {
                 withAnimation(.spring()) {
@@ -70,6 +71,7 @@ extension UITestingBootcampView {
                     .background(.blue)
                     .cornerRadius(10)
             })
+            .accessibilityIdentifier("SignUpButton")
         }
         .padding()
     }
@@ -92,7 +94,7 @@ struct SignedInHomeView: View {
                         .foregroundColor(.white)
                         .background(.red)
                         .cornerRadius(10)
-                })
+                }).accessibilityIdentifier("ShowAlertButton")
                 .alert(isPresented: $showAlert, content: {
                     return Alert(title: Text("welcome to the app!"))
                 })
@@ -108,6 +110,7 @@ struct SignedInHomeView: View {
                         .background(.blue)
                         .cornerRadius(10)
                 }
+                .accessibilityIdentifier("NavigationLinkToDestination")
 
             }
             .padding()
