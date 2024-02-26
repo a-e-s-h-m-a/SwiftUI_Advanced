@@ -12,6 +12,7 @@ class AdvancedCombineDataService {
     
     //@Published var basicPublisher: String = "first publish"
     let currentValuePublisher = CurrentValueSubject<String, Error>("first publish")
+    let passThroughPublisher = PassthroughSubject<String, Error>() // does not hold current value (bit memory efficient)
     
     init () {
         publishFakeData()
@@ -22,7 +23,8 @@ class AdvancedCombineDataService {
         
         for x in items.indices {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(x)) {
-                self.currentValuePublisher.send(items[x])
+                self.passThroughPublisher.send(items[x])
+                //self.currentValuePublisher.send(items[x])
                 //self.basicPublisher = items[x]
             }
         }
@@ -41,7 +43,7 @@ class AdvancedCombineBootcampViewModel: ObservableObject {
     }
     
     private func addSubscribers() {
-        dataService.currentValuePublisher
+        dataService.passThroughPublisher
             .sink { completion in
                 switch completion {
                 case .finished:
