@@ -10,15 +10,19 @@ import Combine
 
 class AdvancedCombineDataService {
     
-    @Published var basicPublisher: [String] = []
+    @Published var basicPublisher: String = ""
     
     init () {
         publishFakeData()
     }
     
     private func publishFakeData() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.basicPublisher = ["one", "two", "three"]
+        let items = ["one", "two", "three"]
+        
+        for x in items.indices {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(x)) {
+                self.basicPublisher = items[x]
+            }
         }
     }
 }
@@ -44,7 +48,7 @@ class AdvancedCombineBootcampViewModel: ObservableObject {
                     print("error: \(error.localizedDescription)")
                 }
             } receiveValue: { [weak self] returnedValue in
-                self?.data = returnedValue
+                self?.data.append(returnedValue)
             }
             .store(in: &cancellables)
     }
