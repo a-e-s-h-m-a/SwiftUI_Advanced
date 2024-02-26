@@ -11,6 +11,7 @@
 		180A7B912B26F9CF00114813 /* CustomCurvesBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A7B902B26F9CF00114813 /* CustomCurvesBootcamp.swift */; };
 		1814EABF2B2D722400FAEEC1 /* UIViewRepresentableBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814EABE2B2D722400FAEEC1 /* UIViewRepresentableBootcamp.swift */; };
 		181855BD2B24DA91004B752B /* AnyTransitionBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181855BC2B24DA91004B752B /* AnyTransitionBootcamp.swift */; };
+		181A501B2B8CDDDA00D098D1 /* AdvancedCombineBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181A501A2B8CDDDA00D098D1 /* AdvancedCombineBootcamp.swift */; };
 		1836BBDF2B3B0946001287ED /* NewMockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836BBDE2B3B0946001287ED /* NewMockDataService.swift */; };
 		1836BBE12B3B0AB3001287ED /* NewMockDataService_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836BBE02B3B0AB3001287ED /* NewMockDataService_Test.swift */; };
 		183E84022B2C602100FA3AC9 /* AppNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E84012B2C602100FA3AC9 /* AppNavBarView.swift */; };
@@ -71,6 +72,7 @@
 		180A7B902B26F9CF00114813 /* CustomCurvesBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurvesBootcamp.swift; sourceTree = "<group>"; };
 		1814EABE2B2D722400FAEEC1 /* UIViewRepresentableBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewRepresentableBootcamp.swift; sourceTree = "<group>"; };
 		181855BC2B24DA91004B752B /* AnyTransitionBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionBootcamp.swift; sourceTree = "<group>"; };
+		181A501A2B8CDDDA00D098D1 /* AdvancedCombineBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCombineBootcamp.swift; sourceTree = "<group>"; };
 		1836BBDE2B3B0946001287ED /* NewMockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMockDataService.swift; sourceTree = "<group>"; };
 		1836BBE02B3B0AB3001287ED /* NewMockDataService_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMockDataService_Test.swift; sourceTree = "<group>"; };
 		183E84012B2C602100FA3AC9 /* AppNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavBarView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				18E600172B394564006CF977 /* DependencyInjectionBootcamp.swift */,
 				18DCB91A2B3AA19400E13D43 /* UnitTestingBootcamp */,
 				18B4DB4D2B406C3F00DC149C /* UITestingBootcampView.swift */,
+				181A501A2B8CDDDA00D098D1 /* AdvancedCombineBootcamp.swift */,
 				185ACBBB2B235A0A00F0AB07 /* Assets.xcassets */,
 				185ACBBD2B235A0A00F0AB07 /* Preview Content */,
 			);
@@ -402,6 +405,7 @@
 				188B5E922B2C10B400637932 /* CustomTabBarView.swift in Sources */,
 				183E84082B2C778600FA3AC9 /* CustomNavView.swift in Sources */,
 				183E84042B2C6F3800FA3AC9 /* CustomNavBarView.swift in Sources */,
+				181A501B2B8CDDDA00D098D1 /* AdvancedCombineBootcamp.swift in Sources */,
 				18E2D3422B283F3A007C6347 /* ViewBuilderBootcamp.swift in Sources */,
 				1874380D2B27617300D33213 /* GenericsBootcamp.swift in Sources */,
 				18E2661E2B2EAAF300CD7B3B /* UIViewControllerRepresentableBootcamp.swift in Sources */,
