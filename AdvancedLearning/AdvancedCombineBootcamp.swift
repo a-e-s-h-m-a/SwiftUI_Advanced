@@ -19,7 +19,7 @@ class AdvancedCombineDataService {
     }
     
     private func publishFakeData() {
-        let items: [Int] = Array(1..<11)
+        let items: [Int] = [1,2,3,4,5,6,7,8,9,10]
         
         for x in items.indices {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(x)) {
@@ -94,6 +94,60 @@ class AdvancedCombineBootcampViewModel: ObservableObject {
              */
         
             // Filtering / Reducing operations
+            /*
+            //.map { String($0) }
+            //.tryMap({ x in
+            //    if x == 5 {
+            //        throw URLError(.badServerResponse)
+            //    }
+            //    return String(x)
+            //})
+            //.compactMap({ x in
+            //    if x == 5 {
+            //        return nil // ignore the value
+            //    }
+            //    return String(x)
+            //})
+            //.tryCompactMap()
+            //.filter { $0 > 3 && $0 < 7 }
+            //.tryFilter()
+            //.removeDuplicates()
+            //.removeDuplicates(by: { x, y in
+            //    return x == y
+            //})
+            //.replaceNil(with: 0)
+            //.replaceEmpty(with: [])
+            //.replaceError(with: "Default")
+            //.scan(0, { existingValue, newValue in
+            //    return existingValue + newValue
+            //})
+            //.scan(0, { $0 + $1 })
+            //.scan(0, +)
+            //.tryScan(,)
+            //.reduce(0, { $0 + $1 }) // published at last to a one final value
+            //.reduce(0, +)
+            //.collect() collect all -> publish all at once
+            //.collect(3)
+            //.allSatisfy({ $0 == 5 })
+            //.tryAllSatisfy()
+             */
+        
+            // Timing operator
+            /*
+            //.debounce(for: 1, scheduler: DispatchQueue.main)
+            //.delay(for: 2, scheduler: DispatchQueue.main)
+            //
+            //.measureInterval(using: DispatchQueue.main)
+            //.map({ stride in
+            //    return "\(stride.timeInterval)"
+            //})
+            //
+            //.throttle(for: 3, scheduler: DispatchQueue.main, latest: true)
+            //.retry(3)
+            //.timeout(0.75, scheduler: DispatchQueue.main)
+             */
+        
+            // Multi Publisher / Subscribers
         
             .map { String($0) }
             .sink { completion in
