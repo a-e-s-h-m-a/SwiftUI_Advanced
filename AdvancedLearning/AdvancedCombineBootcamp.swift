@@ -13,6 +13,8 @@ class AdvancedCombineDataService {
     //@Published var basicPublisher: String = "first publish"
     // let currentValuePublisher = CurrentValueSubject<Int, Error>("first publish")
     let passThroughPublisher = PassthroughSubject<Int, Error>() // does not hold current value (bit memory efficient)
+    let boolPublisher = PassthroughSubject<Bool, Error>()
+    let intPublisher = PassthroughSubject<Int, Error>()
     
     init () {
         publishFakeData()
@@ -27,6 +29,13 @@ class AdvancedCombineDataService {
                 //self.currentValuePublisher.send(items[x])
                 //self.basicPublisher = items[x]
                 
+                if x > 4 && x < 8 {
+                    self.boolPublisher.send(true)
+                    self.intPublisher.send(999)
+                } else {
+                    self.boolPublisher.send(false)
+                }
+                
                 if x == items.indices.last {
                     self.passThroughPublisher.send(completion: .finished)
                 }
@@ -38,8 +47,11 @@ class AdvancedCombineDataService {
 class AdvancedCombineBootcampViewModel: ObservableObject {
     
     @Published var data: [String] = []
+    @Published var bools: [Bool] = []
     @Published var error: String = ""
     let dataService = AdvancedCombineDataService()
+    
+    let multicastPublisher = PassthroughSubject<Int, Error>()
     
     var cancellables = Set<AnyCancellable>()
     
@@ -48,7 +60,7 @@ class AdvancedCombineBootcampViewModel: ObservableObject {
     }
     
     private func addSubscribers() {
-        dataService.passThroughPublisher
+        //dataService.passThroughPublisher
             // Sequence operations
             /*//.first()
             //.first(where: { $0 > 4 })
@@ -148,7 +160,51 @@ class AdvancedCombineBootcampViewModel: ObservableObject {
              */
         
             // Multi Publisher / Subscribers
+            /*
+            //--------------------
+            //.combineLatest(dataService.boolPublisher)
+            //.compactMap({ (int, bool) in
+            //    if bool {
+            //        return int
+            //    } else {
+            //        return nil
+            //    }
+            //})
+            //.removeDuplicates()
+            //---------------------
+            //.combineLatest(dataService.boolPublisher, dataService.intPublisher)
+            //.compactMap({ (int1, bool, int2) in
+            //    if bool {
+            //        return int1
+            //    }
+            //    return -1
+            //})
+            //---------------------
+            //.merge(with: dataService.intPublisher)
+            //---------------------
+            //.zip(dataService.boolPublisher, dataService.intPublisher)
+            //.map({ tupple in
+            //    return String(tupple.0) + tupple.1.description + String(tupple.2)
+            //})
+            //---------------------
+            //.tryMap({ _ in
+            //    throw URLError(.badServerResponse)
+            //})
+            //.catch({ error in
+            //    return self.dataService.intPublisher
+            //})
+            //---------------------
+             */
         
+        let sharedPublisher = dataService.passThroughPublisher
+            //.dropFirst(3)
+            .share() // sharing
+            //.multicast { // ????
+            //    PassthroughSubject<Int, Error>()
+            //}
+            .multicast(subject: multicastPublisher)
+        
+        sharedPublisher
             .map { String($0) }
             .sink { completion in
                 switch completion {
@@ -161,6 +217,26 @@ class AdvancedCombineBootcampViewModel: ObservableObject {
                 self?.data.append(returnedValue)
             }
             .store(in: &cancellables)
+        
+        sharedPublisher
+            .map { $0 > 5 ? true : false }
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.error = "error: \(error)"
+                }
+            } receiveValue: { [weak self] returnedValue in
+                self?.bools.append(returnedValue)
+            }
+            .store(in: &cancellables)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            sharedPublisher
+                .connect()
+                .store(in: &self.cancellables)
+        }
     }
     
 }
@@ -171,14 +247,23 @@ struct AdvancedCombineBootcamp: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                ForEach(vm.data, id: \.self) {
-                    Text($0)
-                        .font(.largeTitle)
-                        .fontWeight(.black)
+            HStack {
+                VStack {
+                    ForEach(vm.data, id: \.self) {
+                        Text($0)
+                            .font(.largeTitle)
+                            .fontWeight(.black)
+                    }
+                    if !vm.error.isEmpty {
+                        Text(vm.error)
+                    }
                 }
-                if !vm.error.isEmpty {
-                    Text(vm.error)
+                VStack {
+                    ForEach(vm.bools, id: \.self) {
+                        Text($0.description)
+                            .font(.largeTitle)
+                            .fontWeight(.black)
+                    }
                 }
             }
         }
