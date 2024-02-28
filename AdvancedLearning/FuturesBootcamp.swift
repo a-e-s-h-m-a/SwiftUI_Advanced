@@ -23,17 +23,28 @@ class FuturesBootcampViewModel: ObservableObject {
     }
     
     func download() {
-//        getCombinePublisher()
-//            .sink { _ in
-//                
-//            } receiveValue: { [weak self] returnedValue in
-//                self?.title = returnedValue
-//            }
-//            .store(in: &cancellables)
+        // //combine
+        //getCombinePublisher()
+        //    .sink { _ in
+        //
+        //    } receiveValue: { [weak self] returnedValue in
+        //        self?.title = returnedValue
+        //    }
+        //    .store(in: &cancellables)
         
-        getEscapingClosure { [weak self] returnedValue, error in
-            self?.title = returnedValue
-        }
+        // //closure
+        //getEscapingClosure { [weak self] returnedValue, error in
+        //    self?.title = returnedValue
+        //}
+        
+        // using Futures
+        getFuturePublisher()
+            .sink { _ in
+        
+            } receiveValue: { [weak self] returnedValue in
+                self?.title = returnedValue
+            }
+            .store(in: &cancellables)
 
     }
     
@@ -49,6 +60,33 @@ class FuturesBootcampViewModel: ObservableObject {
             completionHandler("New Value 2", nil)
         }
         .resume()
+    }
+    
+    func getFuturePublisher() -> Future<String, Error> {
+        return Future { [weak self] promise in
+            self?.getEscapingClosure { returnedValue, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else {
+                    promise(.success(returnedValue))
+                }
+            }
+        }
+    }
+    
+    // EXAMPLE
+    func doSomething(completion: @escaping (_ value: String) -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            completion("NEW STRING")
+        }
+    }
+    
+    func doSomethingFuture() -> Future<String, Never> {
+        Future { [weak self] promise in
+            self?.doSomething(completion: { value in
+                promise(.success(value))
+            })
+        }
     }
 }
 
