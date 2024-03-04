@@ -15,6 +15,7 @@
 		183539372B923283000648CE /* TimeLineViewBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183539362B923283000648CE /* TimeLineViewBootcamp.swift */; };
 		183539392B938A05000648CE /* CustomBindingBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183539382B938A05000648CE /* CustomBindingBootcamp.swift */; };
 		1835393B2B94D255000648CE /* ErrorAlertBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835393A2B94D255000648CE /* ErrorAlertBootcamp.swift */; };
+		1835393D2B9612FC000648CE /* KeypathsBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835393C2B9612FC000648CE /* KeypathsBootcamp.swift */; };
 		1836BBDF2B3B0946001287ED /* NewMockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836BBDE2B3B0946001287ED /* NewMockDataService.swift */; };
 		1836BBE12B3B0AB3001287ED /* NewMockDataService_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836BBE02B3B0AB3001287ED /* NewMockDataService_Test.swift */; };
 		183E84022B2C602100FA3AC9 /* AppNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E84012B2C602100FA3AC9 /* AppNavBarView.swift */; };
@@ -80,6 +81,7 @@
 		183539362B923283000648CE /* TimeLineViewBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewBootcamp.swift; sourceTree = "<group>"; };
 		183539382B938A05000648CE /* CustomBindingBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBindingBootcamp.swift; sourceTree = "<group>"; };
 		1835393A2B94D255000648CE /* ErrorAlertBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertBootcamp.swift; sourceTree = "<group>"; };
+		1835393C2B9612FC000648CE /* KeypathsBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypathsBootcamp.swift; sourceTree = "<group>"; };
 		1836BBDE2B3B0946001287ED /* NewMockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMockDataService.swift; sourceTree = "<group>"; };
 		1836BBE02B3B0AB3001287ED /* NewMockDataService_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMockDataService_Test.swift; sourceTree = "<group>"; };
 		183E84012B2C602100FA3AC9 /* AppNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavBarView.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				183539362B923283000648CE /* TimeLineViewBootcamp.swift */,
 				183539382B938A05000648CE /* CustomBindingBootcamp.swift */,
 				1835393A2B94D255000648CE /* ErrorAlertBootcamp.swift */,
+				1835393C2B9612FC000648CE /* KeypathsBootcamp.swift */,
 				185ACBBB2B235A0A00F0AB07 /* Assets.xcassets */,
 				185ACBBD2B235A0A00F0AB07 /* Preview Content */,
 			);
@@ -408,6 +411,7 @@
 				18B4DB4E2B406C3F00DC149C /* UITestingBootcampView.swift in Sources */,
 				188B5E962B2C235500637932 /* TabBarItemsPreferenceKey.swift in Sources */,
 				188B5E902B2C0DD200637932 /* AppTabBarView.swift in Sources */,
+				1835393D2B9612FC000648CE /* KeypathsBootcamp.swift in Sources */,
 				1814EABF2B2D722400FAEEC1 /* UIViewRepresentableBootcamp.swift in Sources */,
 				185ACBC82B2364FF00F0AB07 /* ButtonStyleBootcamp.swift in Sources */,
 				185ACBC62B235BCC00F0AB07 /* ViewModifierBootcamp.swift in Sources */,
