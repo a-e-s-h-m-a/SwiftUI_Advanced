@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct FileManagerProperty {
-    var title: String = "Starting title"
+struct FileManagerProperty: DynamicProperty { // telling swiftUI that there is a dynamic property here
+    @State var title: String = "Starting title"
     
     private var path: URL {
         FileManager
@@ -18,7 +18,7 @@ struct FileManagerProperty {
             .appending(path: "custom_title.txt")
     }
     
-    mutating func load() {
+    func load() {
         do {
             title = try String(contentsOf: path, encoding: .utf8)
             print("SUCCESS READ")
@@ -27,7 +27,7 @@ struct FileManagerProperty {
         }
     }
     
-    mutating func save(newValue: String) {
+    func save(newValue: String) {
         do {
             try newValue.write(to: path, atomically: false, encoding: .utf8)
             title = newValue
@@ -40,7 +40,7 @@ struct FileManagerProperty {
 
 struct PropertyWrappersBootcamp: View {
     
-    @State var fileManagerProperty = FileManagerProperty()
+    var fileManagerProperty = FileManagerProperty()
     //@State private var title: String = "Starting title"
     
     var body: some View {
