@@ -7,29 +7,33 @@
 
 import SwiftUI
 
-struct FileManagerProperty: DynamicProperty { // telling swiftUI that there is a dynamic property here
-    @State var title: String = "Starting title"
+extension FileManager {
     
-    private var path: URL {
+    static func documentPath() -> URL {
         FileManager
             .default
             .urls(for: .documentDirectory, in: .userDomainMask)
             .first!
             .appending(path: "custom_title.txt")
     }
+}
+
+struct FileManagerProperty: DynamicProperty { // telling swiftUI that there is a dynamic property here
+    @State var title: String
     
-    func load() {
+    init() {
         do {
-            title = try String(contentsOf: path, encoding: .utf8)
+            title = try String(contentsOf: FileManager.documentPath(), encoding: .utf8)
             print("SUCCESS READ")
         } catch {
+            title = "Starting title"
             print("ERROR READ: \(error)")
         }
     }
     
     func save(newValue: String) {
         do {
-            try newValue.write(to: path, atomically: false, encoding: .utf8)
+            try newValue.write(to: FileManager.documentPath(), atomically: false, encoding: .utf8)
             title = newValue
             print("SUCCESS SAVE")
         } catch {
@@ -53,9 +57,6 @@ struct PropertyWrappersBootcamp: View {
             Button("Click me 2") {
                 fileManagerProperty.save(newValue: "title 2")
             }
-        }
-        .onAppear {
-            fileManagerProperty.load()
         }
     }
 }
