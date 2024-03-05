@@ -19,7 +19,13 @@ extension FileManager {
 }
 
 struct FileManagerProperty: DynamicProperty { // telling swiftUI that there is a dynamic property here
-    @State var title: String
+    @State private var title: String
+    var currentValue: String {
+        get { title }
+        nonmutating set {
+            save(newValue: newValue)
+        }
+    }
     
     init() {
         do {
@@ -49,13 +55,13 @@ struct PropertyWrappersBootcamp: View {
     
     var body: some View {
         VStack(spacing: 30) {
-            Text(fileManagerProperty.title).font(.largeTitle)
+            Text(fileManagerProperty.currentValue).font(.largeTitle)
             
             Button("Click me 1") {
-                fileManagerProperty.save(newValue: "title 1")
+                fileManagerProperty.currentValue = "title 1"
             }
             Button("Click me 2") {
-                fileManagerProperty.save(newValue: "title 2")
+                fileManagerProperty.currentValue = "title 2"
             }
         }
     }
