@@ -25,7 +25,8 @@ struct AdvancedLearningApp: App {
     
     var body: some Scene {
         WindowGroup {
-            UITestingBootcampView(currentUserIsSignedIn: currentUserIsSignedIn)
+            //UITestingBootcampView(currentUserIsSignedIn: currentUserIsSignedIn)
+            PropertyWrappersBootcamp()
         }
     }
 }

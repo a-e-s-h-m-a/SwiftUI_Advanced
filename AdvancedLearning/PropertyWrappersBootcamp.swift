@@ -22,10 +22,39 @@ struct PropertyWrappersBootcamp: View {
                 setTitle(newValue: "title 2")
             }
         }
+        .onAppear {
+            do {
+                let savedTitle = try String(contentsOf: path, encoding: .utf8)
+                title = savedTitle
+                print("SUCCESS READ")
+            } catch {
+                print("ERROR READ: \(error)")
+            }
+        }
     }
     
     private func setTitle(newValue: String) {
-        title = newValue.uppercased()
+        let uppercased = newValue.uppercased()
+        title = uppercased
+        save(newValue: uppercased)
+    }
+    
+    private var path: URL {
+        FileManager
+            .default
+            .urls(for: .documentDirectory, in: .userDomainMask)
+            .first!
+            .appending(path: "custom_title.txt")
+    }
+    
+    private func save(newValue: String) {
+        do {
+            try newValue.write(to: path, atomically: false, encoding: .utf8)
+            print(NSHomeDirectory())
+            print("SUCCESS SAVE")
+        } catch {
+            print("ERROR SAVING \(error)")
+        }
     }
 }
 
