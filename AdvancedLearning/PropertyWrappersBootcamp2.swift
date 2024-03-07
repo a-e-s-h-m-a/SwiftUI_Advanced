@@ -79,6 +79,25 @@ struct FileManagerCodableProperty<T: Codable>: DynamicProperty {
         }
     }
     
+    init(_ key: KeyPath<FileManagerValues, String>) {
+        let keyPath = FileManagerValues.shared[keyPath: key]
+        
+        let key = keyPath
+        self.key = key
+        
+        do {
+            let url = FileManager.documentPath(key: key)
+            let data = try Data(contentsOf: url)
+            let object = try JSONDecoder().decode(T.self, from: data)
+            
+            _value = State(wrappedValue: object)
+            print("SUCCESS READ")
+        } catch {
+            _value = State(initialValue: nil)
+            print("ERROR READ: \(error)")
+        }
+    }
+    
     func save(newValue: T?) {
         do {
             let data = try JSONEncoder().encode(newValue)
@@ -98,12 +117,20 @@ struct User: Codable {
     let isPremium: Bool
 }
 
+struct FileManagerValues {
+    static let shared = FileManagerValues()
+    private init() {}
+    
+    let userProfile = "user_profile"
+}
+
 
 struct PropertyWrappersBootcamp2: View {
     
     //@Capitalized private var title: String = "Hello world"
     @Uppercased private var title: String = "Hello world"
-    @FileManagerCodableProperty("user_profile") private var userProfile: User?
+    //@FileManagerCodableProperty("user_profile") private var userProfile: User?
+    @FileManagerCodableProperty(\.userProfile) private var userProfile: User?
     
     var body: some View {
         VStack {
@@ -124,7 +151,7 @@ struct SomeBindingView: View {
     
     var body: some View {
         Button(userProfile?.name ?? "no value") {
-            userProfile = User(name: "Jessica", age: 30, isPremium: false)
+            userProfile = User(name: "Mike", age: 30, isPremium: false)
         }
     }
 }
