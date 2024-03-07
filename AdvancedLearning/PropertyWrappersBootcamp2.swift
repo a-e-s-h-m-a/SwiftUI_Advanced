@@ -57,15 +57,13 @@ struct FileManagerCodableProperty<T: Codable>: DynamicProperty {
     }
     
     var projectedValue: Binding<T?> {
-        Binding {
-            wrappedValue
-        } set: { newValue in
-            wrappedValue = newValue
-        }
-
+        Binding(
+            get: { wrappedValue },
+            set: { wrappedValue = $0 }
+        )
     }
     
-    init(wrappedValue: T?, _ key: String) {
+    init(_ key: String) {
         self.key = key
         
         do {
@@ -76,7 +74,7 @@ struct FileManagerCodableProperty<T: Codable>: DynamicProperty {
             _value = State(wrappedValue: object)
             print("SUCCESS READ")
         } catch {
-            _value = State(initialValue: wrappedValue)
+            _value = State(initialValue: nil)
             print("ERROR READ: \(error)")
         }
     }
@@ -105,19 +103,28 @@ struct PropertyWrappersBootcamp2: View {
     
     //@Capitalized private var title: String = "Hello world"
     @Uppercased private var title: String = "Hello world"
-    @FileManagerCodableProperty("user_profile") private var userProfile: User? = nil
+    @FileManagerCodableProperty("user_profile") private var userProfile: User?
     
     var body: some View {
         VStack {
             Button(title) {
                 title = "new title"
             }
-            Button(userProfile?.name ?? "no value") {
-                userProfile = User(name: "NICK", age: 27, isPremium: true)
-            }
+            SomeBindingView(userProfile: $userProfile)
         }
         .onAppear {
             print(NSHomeDirectory())
+        }
+    }
+}
+
+struct SomeBindingView: View {
+    
+    @Binding var userProfile: User?
+    
+    var body: some View {
+        Button(userProfile?.name ?? "no value") {
+            userProfile = User(name: "Jessica", age: 30, isPremium: false)
         }
     }
 }
