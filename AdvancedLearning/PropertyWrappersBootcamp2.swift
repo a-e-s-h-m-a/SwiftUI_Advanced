@@ -226,12 +226,17 @@ struct PropertyWrappersBootcamp2: View {
             }
             //SomeBindingView(userProfile: $userProfile)
             Button(userProfile?.name ?? "no value") {
-                userProfile = User(name: "NICK", age: 27, isPremium: false)
+                userProfile = User(name: "RICKY", age: 27, isPremium: false)
             }
         }
-        .onReceive($userProfile, perform: { newValue in
-            print("RECEIVED NEW VALUE OF: \(newValue)")
-        })
+//        .onReceive($userProfile, perform: { newValue in
+//            print("RECEIVED NEW VALUE OF: \(newValue)")
+//        })
+        .task {
+            for await newValue in $userProfile.values {
+                print("STREAM NEW VALUE: \(newValue)")
+            }
+        }
         .onAppear {
             print(NSHomeDirectory())
         }
