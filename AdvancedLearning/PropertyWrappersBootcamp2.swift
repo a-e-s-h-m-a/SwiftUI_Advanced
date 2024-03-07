@@ -79,10 +79,10 @@ struct FileManagerCodableProperty<T: Codable>: DynamicProperty {
         }
     }
     
-    init(_ key: KeyPath<FileManagerValues, String>) {
+    init(_ key: KeyPath<FileManagerValues, FileManagerKeypath<T>>) {
         let keyPath = FileManagerValues.shared[keyPath: key]
         
-        let key = keyPath
+        let key = keyPath.key
         self.key = key
         
         do {
@@ -117,11 +117,16 @@ struct User: Codable {
     let isPremium: Bool
 }
 
+struct FileManagerKeypath<T: Codable> {
+    let key: String
+    let type: T.Type
+}
+
 struct FileManagerValues {
     static let shared = FileManagerValues()
     private init() {}
     
-    let userProfile = "user_profile"
+    let userProfile = FileManagerKeypath(key: "user_profile", type: User.self)
 }
 
 
@@ -130,7 +135,8 @@ struct PropertyWrappersBootcamp2: View {
     //@Capitalized private var title: String = "Hello world"
     @Uppercased private var title: String = "Hello world"
     //@FileManagerCodableProperty("user_profile") private var userProfile: User?
-    @FileManagerCodableProperty(\.userProfile) private var userProfile: User?
+    //@FileManagerCodableProperty(\.userProfile) private var userProfile: User?
+    @FileManagerCodableProperty(\.userProfile) private var userProfile
     
     var body: some View {
         VStack {
@@ -151,7 +157,7 @@ struct SomeBindingView: View {
     
     var body: some View {
         Button(userProfile?.name ?? "no value") {
-            userProfile = User(name: "Mike", age: 30, isPremium: false)
+            userProfile = User(name: "Jhone", age: 30, isPremium: false)
         }
     }
 }
