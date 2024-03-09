@@ -21,6 +21,7 @@
 		1836BBDF2B3B0946001287ED /* NewMockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836BBDE2B3B0946001287ED /* NewMockDataService.swift */; };
 		1836BBE12B3B0AB3001287ED /* NewMockDataService_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836BBE02B3B0AB3001287ED /* NewMockDataService_Test.swift */; };
 		183DA90B2B9B82B200A579F3 /* SubscriptBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183DA90A2B9B82B200A579F3 /* SubscriptBootcamp.swift */; };
+		183DA90D2B9CBA5600A579F3 /* CustomOperatorBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183DA90C2B9CBA5600A579F3 /* CustomOperatorBootcamp.swift */; };
 		183E84022B2C602100FA3AC9 /* AppNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E84012B2C602100FA3AC9 /* AppNavBarView.swift */; };
 		183E84042B2C6F3800FA3AC9 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E84032B2C6F3800FA3AC9 /* CustomNavBarView.swift */; };
 		183E84062B2C740800FA3AC9 /* CustomNavBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E84052B2C740800FA3AC9 /* CustomNavBarContainerView.swift */; };
@@ -90,6 +91,7 @@
 		1836BBDE2B3B0946001287ED /* NewMockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMockDataService.swift; sourceTree = "<group>"; };
 		1836BBE02B3B0AB3001287ED /* NewMockDataService_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMockDataService_Test.swift; sourceTree = "<group>"; };
 		183DA90A2B9B82B200A579F3 /* SubscriptBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptBootcamp.swift; sourceTree = "<group>"; };
+		183DA90C2B9CBA5600A579F3 /* CustomOperatorBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOperatorBootcamp.swift; sourceTree = "<group>"; };
 		183E84012B2C602100FA3AC9 /* AppNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavBarView.swift; sourceTree = "<group>"; };
 		183E84032B2C6F3800FA3AC9 /* CustomNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
 		183E84052B2C740800FA3AC9 /* CustomNavBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarContainerView.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				1835393E2B97707D000648CE /* PropertyWrappersBootcamp.swift */,
 				183539402B98C8C2000648CE /* PropertyWrappersBootcamp2.swift */,
 				183DA90A2B9B82B200A579F3 /* SubscriptBootcamp.swift */,
+				183DA90C2B9CBA5600A579F3 /* CustomOperatorBootcamp.swift */,
 				185ACBBB2B235A0A00F0AB07 /* Assets.xcassets */,
 				185ACBBD2B235A0A00F0AB07 /* Preview Content */,
 			);
@@ -430,6 +433,7 @@
 				181855BD2B24DA91004B752B /* AnyTransitionBootcamp.swift in Sources */,
 				185ACBB82B235A0900F0AB07 /* AdvancedLearningApp.swift in Sources */,
 				183DA90B2B9B82B200A579F3 /* SubscriptBootcamp.swift in Sources */,
+				183DA90D2B9CBA5600A579F3 /* CustomOperatorBootcamp.swift in Sources */,
 				1874380B2B2756C600D33213 /* AnimatableDataBootcamp.swift in Sources */,
 				188B5E922B2C10B400637932 /* CustomTabBarView.swift in Sources */,
 				183E84082B2C778600FA3AC9 /* CustomNavView.swift in Sources */,
